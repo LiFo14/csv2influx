@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+ for m in 'CPPERF' 'CPUPERF' 'DKCPERF' 'DTPERF' 'GLOBPERF' 'HAPERF' 'HGPERF' 'LAPERF' 'LDEVPERF' 'LDEVPERFSUM' 'MDPERF' 'MPPERF' 'POOLPERF' 'PORTPERF' 'RGPERF' 'RGPERFSUM' 'RLPERF' 'RTPERF' 'STATS' 'TIERPERF'
+do
+influx -database 'test' -execute 'SELECT * FROM "${m}";' -format 'csv' -pretty > /tmp/${m}_uploaded.csv 
+echo done ${m}
+done

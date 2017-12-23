@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+TESTDIR='/tmp/XPLSDATA/'
+
+mkdir -p ${TESTDIR}
+unzip /home/nick/Downloads/Telegram\ Desktop/test.zip -d ${TESTDIR}
+
+docker run --rm -d -v /tmp/:/tmp/ --name=influxdb -p 8086:8086 influxdb
+docker exec -it influxdb bash
+#docker run --rm -v /tmp/:/tmp/ --link=influxdb -it influxdb influx -host influxdb
